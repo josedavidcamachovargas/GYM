@@ -1,0 +1,103 @@
+﻿@using GYM.Utility
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GYM</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+</head>
+<body>
+
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Power House GYM</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        @if (User.IsInRole(RoleNames.Role_Admin))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Gestión de Usuarios
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Index">Usuarios</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="PaymentTypes" asp-action="Index">Realizar pagos</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="PhysicalConditions" asp-action="Index">Condición física de clientes</a>
+                                </div>
+                            </li>
+                        }
+                        @if (User.IsInRole(RoleNames.Role_Receptionist))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Control de Ingresos
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="CodeInfo">Usuarios</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Products" asp-action="Index">Registrar productos</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Invoices" asp-action="Index">Gestionar Facturas</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="ProductBoughts" asp-action="Index">Gestionar Carrito</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="ProductBoughts" asp-action="Carrito">Carrito</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+
+        @RenderBody()
+        <div class="container">
+            <main role="main" class="pb-3">
+
+
+            </main>
+
+        </div>
+        <div class="copyright py-4 text-center text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <small>
+                            <span>&copy; 2021 - Power House GYM</span>
+                        </small>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <img src="~/images/blanco y negro.png" style="width:240px; height:200px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://kit.fontawesome.com/36bc165ddc.js" crossorigin="anonymous"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

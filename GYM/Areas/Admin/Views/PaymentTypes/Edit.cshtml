@@ -1,0 +1,70 @@
+﻿@model GYM.Models.PaymentType
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<hr />
+<div class="container mt-5">
+    <div class="card">
+        <h1>Editar</h1>
+        <div class="card-body">
+            <h4>Pago</h4>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="PaymentDate" class="control-label"></label>
+                    <input asp-for="PaymentDate" class="form-control" />
+                    <span asp-validation-for="PaymentDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DescriptionId" class="control-label"></label>
+                    <select asp-for="DescriptionId" class="form-control" asp-items="ViewBag.DescriptionId"></select>
+                    <span asp-validation-for="DescriptionId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Payment" class="control-label"></label>
+                    <input asp-for="Payment" class="form-control" />
+                    <span asp-validation-for="Payment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PeriodOfTime" class="control-label"></label>
+                    <input asp-for="PeriodOfTime" class="form-control" />
+                    <span asp-validation-for="PeriodOfTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PaymentMean" class="control-label"></label>
+                    <input asp-for="PaymentMean" class="form-control" />
+                    <span asp-validation-for="PaymentMean" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CustomerId" class="control-label"></label>
+                    <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ExpirationDate" class="control-label"></label>
+                    <input asp-for="ExpirationDate" class="form-control" />
+                    <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+                </div>
+                <br />
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-info text-white" style="cursor:pointer">
+                        Regresar a lista
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

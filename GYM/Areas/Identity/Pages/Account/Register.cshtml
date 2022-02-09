@@ -1,0 +1,120 @@
+﻿@page
+@using GYM.Utility;
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registro";
+}
+
+
+
+<div class="container mt-5">
+    <div class="card">
+        <h1>@ViewData["Title"]</h1>
+        <div class="card-body">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h4>Creación de una nueva cuenta de cliente.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Name">Nombre</label>
+                    <input asp-for="Input.Name" class="form-control" />
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Input.LastName">Apellidos</label>
+                    <input asp-for="Input.LastName" class="form-control" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Input.IDCard">Cédula</label>
+                    <input asp-for="Input.IDCard" class="form-control" />
+                    <span asp-validation-for="Input.IDCard" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.BirthDate" class="control-label"></label>
+                    <input asp-for="Input.BirthDate" class="form-control" />
+                    <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Input.Phone">Teléfono</label>
+                    <input asp-for="Input.Phone" class="form-control" />
+                    <span asp-validation-for="Input.Phone" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Input.Email">Correo Electrónico</label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Input.Password">Contraseña</label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword">Confirmar Contraseña</label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                @if (User.IsInRole(RoleNames.Role_Admin))
+                {
+                    <div class="form-group">
+                        <label asp-for="Input.Role"></label>
+                        @Html.DropDownListFor(m => m.Input.Role,
+                                                          Model.Input.RoleList, "-Select a Role",
+                                                          new { @class = "form-control" })
+                    </div>}
+
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </form>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <section>
+                <h4>Información general del Registro de Usuarios</h4>
+                <hr />
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div>
+                            <p>
+                                Bienvenido al Registro de usuario de la página web de Power House GYM. Desde esta sección usted puede registrarse como usuario para
+                                que pueda hacer uso de la aplicación, agregando y editando clientes que lleguen a hacer uso del Gimnasio.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins)
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }

@@ -1,0 +1,51 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@model GYM.Models.ApplicationUser
+
+<br />
+
+
+<br />
+
+<div class="container d-flex align-items-center flex-column">
+    <h2 class="text-primary">Búsqueda de usuario</h2>
+    <div class="col-md-4">
+        <div class="col-4">
+            <label asp-for="IDCard">Cédula</label>
+        </div>
+        <div class="col-8">
+            <input id="userId" asp-for="IDCard" class="form-control" />
+            <span asp-validation-for="IDCard" class="text-danger"></span>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div id="infoButton" class="form-group">
+
+    </div>
+
+    @*<div class="text-center">
+            <a href="/Admin/User/Details/${data}" class="btn btn-info text-white" style="cursor:pointer">
+                Ver info
+                <i class="fas fa-user"></i>
+            </a>
+        </div>*@
+
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.tiny.cloud/1/dn3ry0rcqra8e6p31pqoqaxuxamf5jsbw4mykb6g8qiadrk5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+            integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+            crossorigin="anonymous"></script>
+    <script src="~/js/UserCodeInfo.js"></script>
+
+}
+
+
+

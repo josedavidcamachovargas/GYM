@@ -1,0 +1,41 @@
+﻿@model GYM.Models.PaymentDescription
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>PaymentDescription</h4>
+<hr />
+<div class="row">
+        <form asp-action="Edit">
+            <div class="row p-3 border">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="col-8 pt-4">
+                    <div class="col-4">
+                        <label asp-for="Name" class="control-label"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <br />
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+</form>
+    </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

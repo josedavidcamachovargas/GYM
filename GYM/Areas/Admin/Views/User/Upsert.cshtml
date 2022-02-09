@@ -1,0 +1,156 @@
+﻿@model GYM.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Create User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<div class="container mt-5">
+    <div class="card">
+
+        <div class="card-body">
+
+            <form method="post" enctype="multipart/form-data">
+                <div class="row p-3 border">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    @if (Model.Id != null)
+                    {
+                        ViewData["Title"] = "Edit User";
+                    }
+
+                    <div class="col-12 border-bottom">
+                        <h2 class="text-primary">@ViewData["Title"]</h2>
+                        <input type="hidden" asp-for="Id" />
+                    </div>
+
+                    <div class="col-8 pt-4">
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="Name"></label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="LastName"></label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="IDCard"></label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="IDCard" class="form-control" />
+                                <span asp-validation-for="IDCard" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="BirthDate"></label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="BirthDate" class="form-control" />
+                                <span asp-validation-for="BirthDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="Phone"></label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="Phone" class="form-control" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="RegistrationDate"></label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="RegistrationDate" class="form-control" />
+                                <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="Role"></label>
+                            </div>
+                            <div class="col-8">
+                                <select asp-for="Role" class="form-control" asp-items="ViewBag.Role"></select>
+                                <span asp-validation-for="Role" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group row p-3">
+                            <div class="col-8 offset-4">
+                                @if (Model.Id != null)
+                                {
+
+                                    <partial name="_EditAndBackToListButton" model="Model.Id" />
+                                }
+                                else
+                                {
+                                    <div class="row">
+                                        <div class="col">
+                                            <button type="submit" value="Create" class="btn btn-primary form-control">Create</button>
+                                        </div>
+                                        <div class="col">
+                                            <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+        @section Scripts{
+            <partial name="_ValidationScriptsPartial" />
+            <script src="https://cdn.tiny.cloud/1/dn3ry0rcqra8e6p31pqoqaxuxamf5jsbw4mykb6g8qiadrk5/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+            <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+                    integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+                    crossorigin="anonymous"></script>
+
+
+        }
+

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<GYM.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container mt-5">
+    <div class="card">
+        
+        <div class="card-body">
+            <p>
+                <a class="btn btn-primary" asp-action="Create"><i class="fas fa-plus"></i> &nbsp; Crear nueva factura</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PaymentDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Customer)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PaymentDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Customer.Name)
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info text-white" style="cursor:pointer">
+                                    Detalles
+                                    <i class="fas fa-user"></i>
+                                </a>
+                                <a asp-action="GeneralDetails" asp-route-id="@item.Id" class="btn btn-info text-white" style="cursor:pointer">
+                                    Generar Factura
+                                    <i class="fas fa-user"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success text-white" style="cursor:pointer">
+                                    Editar
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger text-white" style="cursor:pointer">
+                                    Eliminar
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

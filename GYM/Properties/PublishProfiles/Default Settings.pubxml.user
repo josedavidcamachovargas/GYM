@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <History>True|2021-10-10T08:13:34.4697765Z;True|2021-10-03T00:50:07.0937900-06:00;True|2021-10-03T00:41:57.7447318-06:00;False|2021-10-03T00:41:21.7316485-06:00;True|2021-10-03T00:32:53.5408251-06:00;True|2021-10-03T00:24:06.8473492-06:00;True|2021-10-03T00:20:42.5703644-06:00;True|2021-10-03T00:16:51.2277200-06:00;True|2021-10-03T00:02:50.8265962-06:00;True|2021-10-03T00:00:07.5772814-06:00;True|2021-10-02T23:56:30.8057621-06:00;True|2021-10-02T23:51:54.4639466-06:00;True|2021-10-02T23:02:36.6855033-06:00;False|2021-10-02T22:58:35.2460087-06:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=SQL5108.site4now.net%3bInitial Catalog=db_a7a950_powergym%3bUser Id=db_a7a950_powergym_admin%3bPassword=PHGZar12</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

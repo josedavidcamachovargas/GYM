@@ -1,0 +1,40 @@
+﻿@model GYM.Data.Builder.ProductsInvoice
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <h1>Detalles</h1>
+        <div class="card-body">
+            <div>
+                <h4>Invoice</h4>
+                <hr />
+                @foreach (string linea in Model.Description.Split('.'))
+                {
+                    <h4>@linea</h4>
+
+                }
+            </div>
+            <br />
+            <br />
+            <div class="col">
+                <a asp-action="Index" class="btn btn-info text-white" style="cursor:pointer">
+                    Regresar a lista
+                    <i class="fas fa-user"></i>
+                </a>
+                <a onclick="printInvoice()" class="btn btn-success text-white" style="cursor:pointer">
+                    Imprimir
+                    <i class="fas fa-print"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+            <script>
+                function printInvoice() {
+                    window.print();
+                }
+            </script>
